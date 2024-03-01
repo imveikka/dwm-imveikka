@@ -20,6 +20,11 @@ And then there are "requiremets":
 
 which can be modified to own liking from `config.h`.
 
+## Current patches
+
+- push
+- alwayscenter
+
 ## Installation
 
 Enter the following command to build and install dwm (if
