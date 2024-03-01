@@ -11,12 +11,13 @@ This is my configuration of dwm using handful of patches.
 
 In order to build dwm you need the Xlib header files.
 
-And then there are "requiremets":
+And then there are "requirements":
 
 - Firefox (browser)
 - Alacritty (terminal)
 - alsa-utils (volume control using keyboard)
 - CaskaydiaCove Nerd Font,
+- dmenu
 
 which can be modified to own liking from `config.h`.
 
