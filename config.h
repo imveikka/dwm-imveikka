@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -10,21 +10,21 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]			= { "caskaydiacove nerd font:size=10" };
 static const char dmenufont[]		= "caskaydiacove nerd font:size=10";
 static const char 
-  col_black_d[]		  = "#181818",
-  col_black_b[]     = "#585858",
-  col_red[]		      = "#ab4642",
-  col_green[]       = "#a1b56c",
-  col_yellow[]      = "#f7ca88",
-  col_blue[]        = "#7cafc2",
-  col_magenta[]     = "#ba8baf",
-  col_cyan[]		    = "#86c1b9",
-  col_white_b[]		  = "#f8f8f8",
-  col_white_d[]     = "#d8d8d8";
+
+col_black[]     = "#181818",
+col_red[]		    = "#ab4642",
+col_green[]     = "#a1b56c",
+col_yellow[]    = "#f7ca88",
+col_blue[]      = "#7cafc2",
+col_magenta[]   = "#ba8baf",
+col_cyan[]		  = "#86c1b9",
+col_white[]		  = "#d8d8d8",
+col_gray[]      = "#787878";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_black_b, col_black_d, col_black_b },
-	[SchemeSel]  = { col_white_b, col_black_d,  col_white_d  },
+	[SchemeNorm] = { col_gray, col_black, col_gray },
+	[SchemeSel]  = { col_white, col_black,  col_white  },
 };
 
 /* tagging */
@@ -38,7 +38,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Steam",		NULL,	    NULL,		0,		      1,		   -1 },
+	{ "Steam",		NULL,	    NULL,		      0,		        1,		   -1 },
 };
 
 /* layout(s) */
@@ -70,8 +70,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
   "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-  "-nb", col_black_d, "-nf", col_white_b,
-  "-sb", col_white_b, "-sf", col_black_d, NULL };
+  "-nb", col_black, "-nf", col_gray,
+  "-sb", col_black, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 
@@ -83,8 +83,9 @@ static const char *volume[3][5] = {
 };
 
 /* screenshot commands */
-static const char *screenshot[2][3] = {
-    {"sclip", NULL, NULL}
+static const char *screenshot[2][2] = {
+    {"printscreen", NULL},
+    {"sclip", NULL}
 };
 
 static const Key keys[] = {
@@ -134,7 +135,7 @@ static const Key keys[] = {
     
     /* screenshot */
   { 0,                        XK_Print,       spawn,         {.v = screenshot[0] } },
-  { ShiftMask,                XK_Print,       spawn,         {.v = screenshot[1] } },
+  { MODKEY|ShiftMask,         XK_s,           spawn,         {.v = screenshot[1] } },
 
 };
 

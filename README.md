@@ -16,8 +16,8 @@ And then there are "requirements":
 - Firefox (browser)
 - Alacritty (terminal)
 - alsa-utils (volume control using keyboard)
-- CaskaydiaCove Nerd Font,
-- dmenu
+- CaskaydiaCove Nerd Font
+- dmenu,
 
 which can be modified to own liking from `config.h`.
 
